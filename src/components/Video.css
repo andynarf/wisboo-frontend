@@ -1,6 +1,7 @@
 .video__contained {
-  height: 360px;
+  height: 30%;
   position: relative;
-  width: 640px;
+  width: 30%;
+  margin: 4px
 }
 
