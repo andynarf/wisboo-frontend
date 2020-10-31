@@ -14,6 +14,8 @@ export default class Video extends React.Component {
 
     document.body.appendChild(script1);
     document.body.appendChild(script2);
+
+
   }
 
   render() {

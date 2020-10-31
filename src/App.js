@@ -1,29 +1,27 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
-import Video from "./components/Video";
+import Upload from './pages/Upload';
+import VideoPage from './pages/VideoPage';
+
+import Videos from "./pages/Videos";
 
 function App() {
-  const [videoList, setvideoList] = useState([
-    "vuw0ay27tr",
-    "vuw0ay27tr",
-    "vuw0ay27tr",
-    "vuw0ay27tr",
-    "vuw0ay27tr",
-    "vuw0ay27tr",
-  ]);
-
   return (
-    <div className="App">
-      <div className='title__container'>
-        <h1> Libreria de videos</h1>
-      </div>
-      <div className="videos__container">
-        {videoList.map((video) => {
-          return <Video id={video}></Video>;
-        })}
-      </div>
-    </div>
+    <Router>
+        <Switch>
+          <Route path="/video">
+            <VideoPage />
+          </Route>
+          <Route exact path="/upload">
+            <Upload />
+          </Route>
+          <Route exact path="/">
+            <Videos />
+          </Route>
+        </Switch>
+    </Router>
   );
 }
 

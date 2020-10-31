@@ -1,0 +1,31 @@
+.title__container {
+    background-color: hsl(200, 12%, 80%);
+    height: 20vh;
+    color: hsl(200, 35%, 25%);
+    font-size: 1.8rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .videos__container {
+    width:100%;
+    height: 70vh;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .link__container {
+      width: 95%;
+      height: 5vh;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      
+    }
+
+.link__container :first-child{
+    text-decoration:none;
+    color: black;
+}
