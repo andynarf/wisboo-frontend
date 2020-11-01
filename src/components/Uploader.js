@@ -6,18 +6,8 @@ export default class Uploader extends React.Component {
   componentWillMount() {
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
-    // const script3 = document.createElement("script");
-
-  //   function wait(ms){
-  //     var start = new Date().getTime();
-  //     var end = start;
-  //     while(end < start + ms) {
-  //       end = new Date().getTime();
-  //    }
-  //  }
    
    
-
     script1.src = `//fast.wistia.com/assets/external/api.js`;
     script1.async = true;
 
@@ -45,18 +35,9 @@ export default class Uploader extends React.Component {
 
     script2.appendChild(scriptText);
 
-    // const scriptText2 = document.createTextNode(`
-    // wistiaUploader.bind('uploadsuccess', function(file, media) {
-    //   console.log('The uploadsuccess event fires when the upload completes successfully, and provides the Media object:\n',  media);
-    // });
-    // `)
-    // script3.appendChild(scriptText2);
-
-
     document.body.appendChild(script1);
     document.body.appendChild(script2);
 
-    // document.body.appendChild(script3);
     
 
   }
@@ -66,14 +47,9 @@ export default class Uploader extends React.Component {
     console.log('actualize componente')
   }
 
-  // uploader () {
-  //   window.wistiaUploader.bind('uploadsuccess', function(file, media) {
-  //     console.log("The upload succeeded. Here's the media object!", media);
-  //   });
-  // }
+
   
   render() {
-    // this.uploader()
 
 
     return (
