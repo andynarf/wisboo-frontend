@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+
+import Video from '../components/Video'
 
 export default function VideoPage() {
-    return (
-        <div>
-            Video Page
-        </div>
-    )
+  const { id } = useParams();
+
+  return (
+    <div>
+      <Video id={id}></Video>
+    </div>
+  );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import './Video.css'
 
 export default class Video extends React.Component {
+
   componentWillMount() {
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
@@ -21,7 +22,7 @@ export default class Video extends React.Component {
   render() {
     return (
         <div className='video__contained'>
-            <div className= {`wistia_embed wistia_async_${this.props.id} videoFoam=true`}/>
+            <div className= {`wistia_embed wistia_async_${this.props.id} playerColor=F93377 videoFoam=true`}/>
         </div>
     );
   }

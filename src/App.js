@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
@@ -11,7 +10,7 @@ function App() {
   return (
       <Router>
         <Switch>
-          <Route path="/video">
+          <Route path="/video/:id">
             <VideoPage />
           </Route>
           <Route exact path="/upload">

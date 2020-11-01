@@ -7,7 +7,6 @@ export default class Uploader extends React.Component {
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
    
-   
     script1.src = `//fast.wistia.com/assets/external/api.js`;
     script1.async = true;
 
