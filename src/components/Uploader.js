@@ -18,10 +18,11 @@ export default class Uploader extends React.Component {
           dropIn: "wistia_uploader",
           projectId: "hq41ttfjz3",
           beforeUpload: function() {
-            wistiaUploader.setFileName('myfile');
+            wistiaUploader.setFileName('${this.props.title}');
           },
             embedCodeOptions: {
-              playerColor: "F93377",},
+              playerColor: "${this.props.color}",
+            },
 
         });
         console.log(window.wistiaUploader);
@@ -43,7 +44,37 @@ export default class Uploader extends React.Component {
 
 
   componentDidUpdate(){
+
     console.log('actualize componente')
+
+    const script2 = document.createElement("script");
+
+    const scriptText = document.createTextNode(`
+    window._wapiq = window._wapiq || [];
+    _wapiq.push(function(W) {
+      window.wistiaUploader = new W.Uploader({
+        accessToken: "abc9e4b7df3cae9eead2386f034a756568fcfcaad3cf053142c1d20a9acfc244",
+        dropIn: "wistia_uploader",
+        projectId: "hq41ttfjz3",
+        beforeUpload: function() {
+          wistiaUploader.setFileName('${this.props.title}');
+        },
+          embedCodeOptions: {
+            playerColor: "${this.props.color}",
+          },
+
+      });
+      console.log(window.wistiaUploader);
+      window.wistiaUploader.bind("uploadprogress", function (file, progress) {
+        console.log(Math.round(progress * 100) + "% uploaded");
+      });
+  });
+  `);
+  
+
+  script2.appendChild(scriptText);
+
+  document.body.appendChild(script2);
   }
 
 
@@ -57,6 +88,7 @@ export default class Uploader extends React.Component {
         <link rel="stylesheet" href="//fast.wistia.com/assets/external/uploader.css" />
         </Helmet>
         <div id="wistia_uploader"></div>
+        <button onClick={() => {console.log(this.props.title)}}> test </button>
       </div>
     );
   }

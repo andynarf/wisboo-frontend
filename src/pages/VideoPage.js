@@ -8,6 +8,7 @@ export default function VideoPage() {
 
   return (
     <div>
+        hola
       <Video id={id}></Video>
     </div>
   );

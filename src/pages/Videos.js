@@ -22,7 +22,10 @@ export default function Videos() {
       </div>
       <div className="videos__container">
         {videoList.map((video) => {
-          return <Video id={video}></Video>;
+          return <div className='video__library__container'> 
+          <Link to={`video/${video}`}>Video Title</Link><Video className='video__video' id={video}></Video>
+          
+          </div>
         })}
       </div>
     </div>
