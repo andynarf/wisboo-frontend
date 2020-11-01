@@ -8,6 +8,11 @@ export default function Upload() {
         <div>
             Upload
             <Uploader></Uploader>
+
+            <div id='uploaded-video' className='uploaded-video__container'>
+
+                hello
+            </div>
         </div>
     )
 }
