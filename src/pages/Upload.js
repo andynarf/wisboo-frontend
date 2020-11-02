@@ -12,7 +12,7 @@ export default function Upload() {
 
     const titleRef = useRef('')
     const [color, setColor] = useState('#424459')
-    const [titleState, setTitleState] = useState('')
+    const [titleState, setTitleState] = useState('titulo')
 
 
     return (
