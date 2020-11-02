@@ -32,11 +32,7 @@ export default function VideoPage({ color }) {
     fetch("https://serene-peak-85680.herokuapp.com/videos")
       .then((response) => response.json())
       .then((data) => {
-        console.log({ data });
-
         const [selected] = data.filter((video) => video.videoid === id);
-
-        console.log(selected);
         setVideoList(selected);
       });
   }, []);
@@ -47,23 +43,25 @@ export default function VideoPage({ color }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data instanceof Array) {
           setComments(data);
         }
       });
   }, [videoList, load]);
 
-  console.log("comments : " + JSON.stringify(comments));
   return (
     <div>
       <Link to="/">volver</Link>
+      <div className="title__container">
+        <h1> {videoList.title}</h1>
+      </div>
+      <div>
       <Video id={id} color={videoList.color}></Video>
       <div>
         <p>comentarios</p>
         <ul>
           {comments.map((comment) => {
-            return <li> {comment.text}</li>;
+            return <li key={comment.id}> {comment.text}</li>;
           })}
         </ul>
         <label htmlFor="name">Deja tu comentario</label>
@@ -78,6 +76,7 @@ export default function VideoPage({ color }) {
         ></input>
 
         <button onClick={() => postData()}>comentar</button>
+        </div>
       </div>
     </div>
   );

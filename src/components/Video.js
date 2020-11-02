@@ -22,11 +22,13 @@ export default class Video extends React.Component {
   }
 
   render() {
-    console.log(this.props.color)
+    const color = this.props.color
     return (
+      color ?
         <div className='video__contained'>
-            <div className= {`wistia_embed wistia_async_${this.props.id} playerColor=${this.props.color} videoFoam=true`}/>
+            <div className= {`wistia_embed wistia_async_${this.props.id} playerColor=${color} videoFoam=true`}/>
         </div>
+        : null
     );
   }
 }
