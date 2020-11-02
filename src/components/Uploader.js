@@ -11,26 +11,44 @@ export default class Uploader extends React.Component {
     script1.async = true;
 
     const scriptText = document.createTextNode(`
-      window._wapiq = window._wapiq || [];
-      _wapiq.push(function(W) {
-        window.wistiaUploader = new W.Uploader({
-          accessToken: "abc9e4b7df3cae9eead2386f034a756568fcfcaad3cf053142c1d20a9acfc244",
-          dropIn: "wistia_uploader",
-          projectId: "hq41ttfjz3",
-          beforeUpload: function() {
-            wistiaUploader.setFileName('${this.props.title}');
+    window._wapiq = window._wapiq || [];
+    _wapiq.push(function(W) {
+      window.wistiaUploader = new W.Uploader({
+        accessToken: "abc9e4b7df3cae9eead2386f034a756568fcfcaad3cf053142c1d20a9acfc244",
+        dropIn: "wistia_uploader",
+        projectId: "hq41ttfjz3",
+        beforeUpload: function() {
+          wistiaUploader.setFileName('${this.props.title}');
+        },
+          embedCodeOptions: {
+            playerColor: "${this.removeCharAt(this.props.color)}",
           },
-            embedCodeOptions: {
-              playerColor: "${this.props.color}",
-            },
 
-        });
-        console.log(window.wistiaUploader);
-        window.wistiaUploader.bind("uploadprogress", function (file, progress) {
-          console.log(Math.round(progress * 100) + "% uploaded");
-        });
-    });
-    `);
+      });
+      wistiaUploader.bind('uploadsuccess', function(file, media) {
+
+        async function postData () {
+
+          try{
+              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${this.props.title}&color=${this.removeCharAt(this.props.color)}",{
+                  method: 'post',
+                  mode: 'no-cors',
+             
+              })
+              console.log(result)
+      
+          } catch(e) {
+              console.log(e)
+          }
+        }
+        postData()
+      
+
+        
+      });
+     
+  });
+  `);
     
 
     script2.appendChild(scriptText);
@@ -42,8 +60,14 @@ export default class Uploader extends React.Component {
 
   }
 
-
+  removeCharAt (string) {
+    let tmp = string.split(''); // convert to an array
+    tmp.splice(0 , 1); // remove 1 element from the array (adjusting for non-zero-indexed counts)
+    return tmp.join(''); // reconstruct the string
+}
   componentDidUpdate(){
+
+
 
     console.log('actualize componente')
 
@@ -60,14 +84,32 @@ export default class Uploader extends React.Component {
           wistiaUploader.setFileName('${this.props.title}');
         },
           embedCodeOptions: {
-            playerColor: "${this.props.color}",
+            playerColor: "${this.removeCharAt(this.props.color)}",
           },
 
       });
-      console.log(window.wistiaUploader);
-      window.wistiaUploader.bind("uploadprogress", function (file, progress) {
-        console.log(Math.round(progress * 100) + "% uploaded");
+      wistiaUploader.bind('uploadsuccess', function(file, media) {
+
+        async function postData () {
+
+          try{
+              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${this.props.title}&color=${this.removeCharAt(this.props.color)}",{
+                  method: 'post',
+                  mode: 'no-cors',
+             
+              })
+              console.log(result)
+      
+          } catch(e) {
+              console.log(e)
+          }
+        }
+        postData()
+      
+
+        
       });
+     
   });
   `);
   

@@ -3,7 +3,7 @@ import "./App.css";
 
 import Upload from "./pages/Upload";
 import VideoPage from "./pages/VideoPage";
-
+import TestPage from './pages/TestPage'
 import Videos from "./pages/Videos";
 
 function App() {
@@ -18,6 +18,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Videos />
+          </Route>
+          <Route exact path="/test">
+            <TestPage />
           </Route>
         </Switch>
       </Router>
