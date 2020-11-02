@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom";
 
 import Video from "../components/Video";
 
+import './VideoPage.css'
+
 export default function VideoPage({ color }) {
   const { id } = useParams();
 
@@ -55,27 +57,27 @@ export default function VideoPage({ color }) {
       <div className="title__container">
         <h1> {videoList.title}</h1>
       </div>
-      <div>
+      <div className='video-player__container'>
         <Video id={id} color={videoList.color}></Video>
-        <div>
+            <label  className='video-player__label' htmlFor="name">Deja tu comentario</label>
+        <div className='video-player__input__container'>
+  
+            <input classname='video-player__input__'
+              name="name"
+              placeholder="comentario"
+              ref={titleRef}
+              onChange={() => {
+                setTitleState(titleRef.current.value);
+              }}
+            ></input>
+              <button onClick={() => postData()}>comentar</button>
           <p>comentarios</p>
           <ul>
             {comments.map((comment) => {
               return <li key={comment.id}> {comment.text}</li>;
             })}
           </ul>
-          <label htmlFor="name">Deja tu comentario</label>
 
-          <input
-            name="name"
-            placeholder="titulo del video"
-            ref={titleRef}
-            onChange={() => {
-              setTitleState(titleRef.current.value);
-            }}
-          ></input>
-
-          <button onClick={() => postData()}>comentar</button>
         </div>
       </div>
     </div>

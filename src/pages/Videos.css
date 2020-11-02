@@ -2,6 +2,7 @@
     background-color: hsl(200, 12%, 80%);
     height: 20vh;
     color: hsl(200, 35%, 25%);
+    width: 100%;
     font-size: 1.8rem;
     display:flex;
     justify-content: center;
@@ -29,13 +30,10 @@
     text-decoration:none;
     color: black;
 }
-.video__video{
-  height: 400px;
-  
-}
+
 
 .video__library__container{
-  min-width: 600px;
+  min-width: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -54,7 +54,7 @@ export default function Videos() {
           return (
             <div key={videoid} className="video__library__container">
               <Link to={`video/${videoid}`} color={color}>{title}</Link>
-              <Video  className="video__video" id={videoid} color={color}></Video>
+              <Video id={videoid} color={color}></Video>
               <p>{`comentarios : ${commetsRef.current[index]}`}</p>
             </div>
           );

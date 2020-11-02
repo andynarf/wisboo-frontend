@@ -1,12 +1,12 @@
 import React from "react";
 import "./Uploader.css";
-import Helmet from 'react-helmet';
+import Helmet from "react-helmet";
 
 export default class Uploader extends React.Component {
   componentWillMount() {
     const script1 = document.createElement("script");
     const script2 = document.createElement("script");
-   
+
     script1.src = `//fast.wistia.com/assets/external/api.js`;
     script1.async = true;
 
@@ -30,7 +30,9 @@ export default class Uploader extends React.Component {
         async function postData () {
 
           try{
-              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${this.props.title}&color=${this.removeCharAt(this.props.color)}",{
+              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${
+                this.props.title
+              }&color=${this.removeCharAt(this.props.color)}",{
                   method: 'post',
                   mode: 'no-cors',
              
@@ -49,27 +51,19 @@ export default class Uploader extends React.Component {
      
   });
   `);
-    
 
     script2.appendChild(scriptText);
 
     document.body.appendChild(script1);
     document.body.appendChild(script2);
-
-    
-
   }
 
-  removeCharAt (string) {
-    let tmp = string.split(''); // convert to an array
-    tmp.splice(0 , 1); // remove 1 element from the array (adjusting for non-zero-indexed counts)
-    return tmp.join(''); // reconstruct the string
-}
-  componentDidUpdate(){
-
-
-
-    console.log('actualize componente')
+  removeCharAt(string) {
+    let tmp = string.split("");
+    tmp.splice(0, 1); 
+    return tmp.join(""); 
+  }
+  componentDidUpdate() {
 
     const script2 = document.createElement("script");
 
@@ -93,7 +87,9 @@ export default class Uploader extends React.Component {
         async function postData () {
 
           try{
-              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${this.props.title}&color=${this.removeCharAt(this.props.color)}",{
+              let result = await fetch("https://serene-peak-85680.herokuapp.com/videos?videoid=" + media.id + "&title=${
+                this.props.title
+              }&color=${this.removeCharAt(this.props.color)}",{
                   method: 'post',
                   mode: 'no-cors',
              
@@ -112,25 +108,22 @@ export default class Uploader extends React.Component {
      
   });
   `);
-  
 
-  script2.appendChild(scriptText);
+    script2.appendChild(scriptText);
 
-  document.body.appendChild(script2);
+    document.body.appendChild(script2);
   }
 
-
-  
   render() {
-
-
     return (
-      <div id='mydiv' className="video__contained">
+      <div id="mydiv" className="video__contained">
         <Helmet>
-        <link rel="stylesheet" href="//fast.wistia.com/assets/external/uploader.css" />
+          <link
+            rel="stylesheet"
+            href="//fast.wistia.com/assets/external/uploader.css"
+          />
         </Helmet>
         <div id="wistia_uploader"></div>
-        <button onClick={() => {console.log(this.props.title)}}> test </button>
       </div>
     );
   }
