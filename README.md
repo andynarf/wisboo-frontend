@@ -6,7 +6,7 @@ Front End uploading videos application , made as Wisboo's recruiting process.
 ![screenshot](appSC.png)
 
 # important
-due to Wistia's account limititation, at most 3 videos can be uploaded, one was left as an example, but take into consideration that only 2 more videos can be uploaded, and even tho api supports delete endpoints, logic to delete videos from my free wistia account, has not been implemented yet.
+due to Wistia's account limititation, at most 3 videos can be uploaded, one was left as an example, but take into consideration that only 2 more videos can be uploaded, and even though api supports delete endpoints, logic to delete videos from my free wistia account, has not been implemented yet.
 
 ## Built With
 
