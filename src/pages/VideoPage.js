@@ -15,7 +15,7 @@ export default function VideoPage({ color }) {
 
   async function postData() {
     try {
-      let result = await fetch(
+      await fetch(
         `https://serene-peak-85680.herokuapp.com/videos/${videoList.id}/comments?text=${titleState}`,
         {
           method: "post",
@@ -35,7 +35,7 @@ export default function VideoPage({ color }) {
         const [selected] = data.filter((video) => video.videoid === id);
         setVideoList(selected);
       });
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     fetch(
@@ -56,26 +56,26 @@ export default function VideoPage({ color }) {
         <h1> {videoList.title}</h1>
       </div>
       <div>
-      <Video id={id} color={videoList.color}></Video>
-      <div>
-        <p>comentarios</p>
-        <ul>
-          {comments.map((comment) => {
-            return <li key={comment.id}> {comment.text}</li>;
-          })}
-        </ul>
-        <label htmlFor="name">Deja tu comentario</label>
+        <Video id={id} color={videoList.color}></Video>
+        <div>
+          <p>comentarios</p>
+          <ul>
+            {comments.map((comment) => {
+              return <li key={comment.id}> {comment.text}</li>;
+            })}
+          </ul>
+          <label htmlFor="name">Deja tu comentario</label>
 
-        <input
-          name="name"
-          placeholder="titulo del video"
-          ref={titleRef}
-          onChange={() => {
-            setTitleState(titleRef.current.value);
-          }}
-        ></input>
+          <input
+            name="name"
+            placeholder="titulo del video"
+            ref={titleRef}
+            onChange={() => {
+              setTitleState(titleRef.current.value);
+            }}
+          ></input>
 
-        <button onClick={() => postData()}>comentar</button>
+          <button onClick={() => postData()}>comentar</button>
         </div>
       </div>
     </div>

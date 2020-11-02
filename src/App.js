@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import Upload from "./pages/Upload";
 import VideoPage from "./pages/VideoPage";
-import TestPage from './pages/TestPage'
 import Videos from "./pages/Videos";
 
 function App() {
@@ -18,9 +17,6 @@ function App() {
           </Route>
           <Route exact path="/">
             <Videos />
-          </Route>
-          <Route exact path="/test">
-            <TestPage />
           </Route>
         </Switch>
       </Router>
